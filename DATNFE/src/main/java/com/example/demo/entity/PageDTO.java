@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class PageDTO<T> {
+
     private List<T> content;
     private long totalElements;
     private long number;
