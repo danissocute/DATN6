@@ -1,6 +1,10 @@
 package com.example.demo.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -31,5 +35,4 @@ public class PageDTO<T> {
     }
 
     // ... getters and setters ...
-
 }
