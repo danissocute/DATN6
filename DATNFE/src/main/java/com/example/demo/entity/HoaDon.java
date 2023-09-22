@@ -1,26 +1,9 @@
 package com.example.demo.entity;
 
+import lombok.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.util.List;
 import java.util.UUID;
 
 @Table(name = "hoa_don")
@@ -30,28 +13,36 @@ import java.util.UUID;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class HoaDon implements Serializable {
+public class HoaDon {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private UUID id;
 
+    @Column(name = "ma")
     private String ma;
 
-    private Date ngay_tao;
+    @Column(name = "ngay_tao")
+    private String ngayTao;
 
-    private Date ngay_thanh_toan;
+    @Column(name = "ngay_thanh_toan")
+    private String ngayThanhToan;
 
-    private UUID id_nhan_vien;
+    @ManyToOne
+    @JoinColumn(name = "id_nhan_vien")
+    private NhanVien nhanVien;
 
-    private UUID id_khach_hang;
+//    @ManyToOne
+//    @JoinColumn(name = "id_khach_hang")
+//    private KhachHang khachHang;
 
-    private String mo_ta;
+    @Column(name = "mo_ta")
+    private String moTa;
 
-    private BigDecimal tong_tien;
+    @Column(name = "tong_tien")
+    private BigDecimal tongTien;
 
-    private Integer trangthai;
-
-    @OneToMany(mappedBy = "hd")
-    @JsonIgnore
-    private List<GiamGiaChiTietHoaDon> list1;
+    @Column(name = "trangthai")
+    private Integer trangThai;
 }

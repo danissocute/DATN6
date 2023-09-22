@@ -1,10 +1,6 @@
 package com.example.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -15,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class PageDTO<T> {
+
     private List<T> content;
     private long totalElements;
     private long number;

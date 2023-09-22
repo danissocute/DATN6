@@ -1,11 +1,7 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,12 +10,12 @@ import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "khach_hang")
+@Getter
+@Setter
 public class KhachHang implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,9 +40,10 @@ public class KhachHang implements Serializable {
 
     @Column(name = "trangthai")
     private Integer trangthai;
-
+    @JsonIgnore
     @OneToOne(mappedBy = "khach_hang")
     private GioHang gio_hang;
-    @OneToMany(mappedBy = "khach_hang", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "khachHang")
     private List<DiaChi> diaChiList;
 }
