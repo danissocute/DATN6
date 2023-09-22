@@ -47,6 +47,6 @@ public class KhachHang implements Serializable {
 
     @OneToOne(mappedBy = "khach_hang")
     private GioHang gio_hang;
-    @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "khach_hang", cascade = CascadeType.ALL)
     private List<DiaChi> diaChiList;
 }
